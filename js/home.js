@@ -115,7 +115,7 @@ item.innerHTML = `
   <div class="project-center">
     ${
       project.video
-        ? `<video src="${project.video}" muted loop playsinline preload="auto" data-project-video></video>`
+        ? `<video src="${project.video}" muted autoplay loop playsinline controls preload="auto" data-project-video></video>`
         : `<img src="${project.image}" alt="${project.name}" />`
     }
   </div>
