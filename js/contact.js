@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('show');
   });
 
-  // Mostrar modal en móviles con clic (y activar giroscopio)
+// Mostrar modal en móviles con clic (y activar giroscopio)
 btn.addEventListener('click', () => {
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -22,18 +22,26 @@ btn.addEventListener('click', () => {
     modal.classList.add('show');
 
     if (window.DeviceOrientationEvent) {
+      const activateOrientation = () => {
+        window.addEventListener('deviceorientation', handleOrientation, true);
+      };
+
       if (typeof DeviceOrientationEvent.requestPermission === 'function') {
         // iOS necesita permiso
         DeviceOrientationEvent.requestPermission()
           .then(permissionState => {
             if (permissionState === 'granted') {
-              window.addEventListener('deviceorientation', handleOrientation, true);
+              activateOrientation();
+            } else {
+              console.warn('Permiso denegado para el giroscopio');
             }
           })
-          .catch(console.error);
+          .catch(err => {
+            console.error('Error al pedir permiso para giroscopio:', err);
+          });
       } else {
         // Android y navegadores comunes
-        window.addEventListener('deviceorientation', handleOrientation, true);
+        activateOrientation();
       }
 
       function handleOrientation(event) {
@@ -47,6 +55,7 @@ btn.addEventListener('click', () => {
     }
   }
 });
+
 
 
   // 👉 Ocultar modal al salir del botón
