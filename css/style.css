@@ -924,17 +924,15 @@ html::-webkit-scrollbar-button {
 
   /* CV */
    .cv-modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: auto;
-    overflow-y: auto;         
-    padding: 0;
+    height: 100vh;
+    overflow-y: auto;
     z-index: 1000;
-    display: block;            
-    align-items: initial;       
-    justify-content: initial; 
+    display: block; 
+    padding: 0;
   }
 
   .cv-grid {
@@ -943,7 +941,9 @@ html::-webkit-scrollbar-button {
     gap: 2rem;
     padding: 1rem;
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   
 
@@ -1004,6 +1004,31 @@ html::-webkit-scrollbar-button {
 
   .contact-clouse{
     display: none;
+  }
+
+
+  .cv-clouse {
+    position: static;           
+    transform: none;
+    left: auto;
+    bottom: auto;
+    width: 30px;
+    height: 30px;
+  }
+
+  .cv-clouse-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 2rem;
+  }
+
+  /* Opcional: mejora del ícono */
+  .cv-clouse img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 }
 
