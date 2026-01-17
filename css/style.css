@@ -1021,7 +1021,6 @@ html::-webkit-scrollbar-button {
     display: flex;
     justify-content: center;
     margin: 3rem 0 2rem;
-    padding-bottom: 30px;
   }
 
   /* Opcional: mejora del ícono */
