@@ -809,6 +809,7 @@ html::-webkit-scrollbar-button {
   align-items: center; 
   flex-wrap: nowrap;   
   gap: 0.2rem;
+  align-items: flex-start;
 
 }
 
