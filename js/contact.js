@@ -14,6 +14,41 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('show');
   });
 
+  // Mostrar modal en móviles con clic (y activar giroscopio)
+btn.addEventListener('click', () => {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  if (isMobile) {
+    modal.classList.add('show');
+
+    if (window.DeviceOrientationEvent) {
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // iOS necesita permiso
+        DeviceOrientationEvent.requestPermission()
+          .then(permissionState => {
+            if (permissionState === 'granted') {
+              window.addEventListener('deviceorientation', handleOrientation, true);
+            }
+          })
+          .catch(console.error);
+      } else {
+        // Android y navegadores comunes
+        window.addEventListener('deviceorientation', handleOrientation, true);
+      }
+
+      function handleOrientation(event) {
+        const { beta, gamma } = event;
+
+        const rotateX = Math.max(Math.min(beta, 30), -30);
+        const rotateY = Math.max(Math.min(gamma, 30), -30);
+
+        tiltContainer.style.transform = `rotateX(${rotateX / 6}deg) rotateY(${rotateY / 6}deg)`;
+      }
+    }
+  }
+});
+
+
   // 👉 Ocultar modal al salir del botón
   btn.addEventListener('mouseleave', () => {
     setTimeout(() => {
@@ -126,31 +161,7 @@ if (closeBubble) {
 
 
 
-// Efecto de inclinación con el giroscopio en móviles
-if (window.DeviceOrientationEvent) {
-  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-    // iOS requiere permiso
-    DeviceOrientationEvent.requestPermission()
-      .then(permissionState => {
-        if (permissionState === 'granted') {
-          window.addEventListener('deviceorientation', handleOrientation);
-        }
-      })
-      .catch(console.error);
-  } else {
-    // Android y navegadores comunes
-    window.addEventListener('deviceorientation', handleOrientation);
-  }
 
-  function handleOrientation(event) {
-    const { beta, gamma } = event;
-
-    const rotateX = Math.max(Math.min(beta, 30), -30);
-    const rotateY = Math.max(Math.min(gamma, 30), -30);
-
-    card.style.transform = `rotateX(${rotateX / 6}deg) rotateY(${rotateY / 6}deg)`;
-  }
-}
 
 
 
