@@ -113,12 +113,21 @@ item.innerHTML = `
   </div>
 
   <div class="project-center">
-    ${
-      project.video
-        ? `<video src="${project.video}" muted autoplay loop playsinline controls preload="auto" data-project-video></video>`
-        : `<img src="${project.image}" alt="${project.name}" />`
-    }
-  </div>
+  ${
+    project.video
+      ? `<video 
+           src="${project.video}" 
+           autoplay 
+           muted 
+           loop 
+           playsinline 
+           preload="auto" 
+           data-project-video
+         ></video>`
+      : `<img src="${project.image}" alt="${project.name}" />`
+  }
+</div>
+
 
   <div class="project-right">
     ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
@@ -222,3 +231,4 @@ if (introSection && glow) {
 
  
 });
+
