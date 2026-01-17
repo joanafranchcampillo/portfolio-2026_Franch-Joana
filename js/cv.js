@@ -6,13 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!cvTrigger || !cvModal) return;
 
-  // Mostrar modal con pequeña espera para mostrar luz azul
-  cvTrigger.addEventListener('mouseenter', () => {
-    cvModal.classList.remove('slide-hide'); // limpia clase de salida previa
-    setTimeout(() => {
-      cvModal.classList.add('show');
-    }, 120);
-  });
+  // ✅ NUEVO BLOQUE: muestra el modal tanto en PC (hover) como en móvil (click)
+const openCvModal = () => {
+  cvModal.classList.remove('slide-hide');
+  setTimeout(() => {
+    cvModal.classList.add('show');
+  }, 120);
+};
+
+cvTrigger.addEventListener('mouseenter', openCvModal); // para PC
+cvTrigger.addEventListener('click', openCvModal);      // para móvil
+
 
   // Ocultar si el mouse sale del trigger
   cvTrigger.addEventListener('mouseleave', () => {
