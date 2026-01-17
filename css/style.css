@@ -1021,15 +1021,23 @@ html::-webkit-scrollbar-button {
     display: flex;
     justify-content: center;
     margin: 3rem 0 2rem;
+    padding-bottom: 30px;
   }
 
-  /* Opcional: mejora del ícono */
   .cv-clouse img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
   }
+
+/* contacto */
+ .hover-msg {
+    opacity: 1 !important; /* Mostrar siempre en móviles */
+    pointer-events: none;  /* Evita que interfiera con clics */
+  }
+
+
 }
 
 
