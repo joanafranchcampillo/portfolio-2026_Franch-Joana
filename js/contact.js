@@ -69,13 +69,6 @@ btn.addEventListener('click', () => {
     }, 100);
   });
 
-  //  Ocultar modal si el mouse sale completamente
-  modal.addEventListener('mouseleave', () => {
-    modal.classList.remove('show');
-    hoverMsg.classList.remove('show');
-    copiedMsg.classList.remove('show');
-    tiltContainer.style.transform = 'rotateX(0) rotateY(0)';
-  });
 
   // Si el clic fue directamente en el fondo (no dentro del contenido), cierra
   modal.addEventListener('click', (e) => {
