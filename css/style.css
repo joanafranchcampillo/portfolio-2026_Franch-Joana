@@ -1035,7 +1035,9 @@ html::-webkit-scrollbar-button {
     opacity: 1 !important; /* Mostrar siempre en móviles */
     pointer-events: none;  /* Evita que interfiera con clics */
   }
-
+.copied-msg {
+    top: 3rem; 
+  }
 
 }
 
