@@ -55,13 +55,26 @@ html::-webkit-scrollbar-button {
 .hero-top-left,
 .talk-button,
 .hero-center-top,
-.hero-bottom-left{
+.hero-bottom-left,
+.cv-trigger{
   font-size: 0.85rem;
   color: black;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
 
+.scroll {
+  font-size: 0.85rem;
+  color: black;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  padding: 0 0.5rem;
+}
+.arrow-down{
+  display: inline-block;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
 
 .hero-top-right {
   display: flex;
@@ -626,6 +639,15 @@ html::-webkit-scrollbar-button {
   align-items: center;
   background: #f5f6f7;
   overflow: hidden;
+}
+
+.scroll-hint {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* Difuminado superior e inferior */
